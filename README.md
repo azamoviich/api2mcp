@@ -18,6 +18,10 @@ api2mcp https://petstore3.swagger.io/api/v3/openapi.json
 
 That's it. You now have a runnable MCP server exposing every endpoint in that API as a tool an LLM agent can call — typed arguments, docstrings, auth wiring, all generated.
 
+<p align="center">
+  <img src="assets/terminal-demo.svg" alt="api2mcp terminal demo" width="100%"/>
+</p>
+
 ---
 
 ## The problem
