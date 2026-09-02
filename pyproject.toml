@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "api2mcp"
+version = "0.1.0"
+description = "Turn any OpenAPI spec into a working MCP server. One command."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "api2mcp contributors" }]
+keywords = ["mcp", "openapi", "llm", "agent", "tools", "codegen", "anthropic", "claude"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Code Generators",
+]
+dependencies = [
+  "requests>=2.28",
+  "PyYAML>=6.0",
+  "Jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+serve = ["mcp>=1.0"]  # works with both 1.x (FastMCP) and 2.x (MCPServer) APIs
+
+[project.scripts]
+api2mcp = "api2mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/azamoviich/api2mcp"
+Repository = "https://github.com/azamoviich/api2mcp"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/api2mcp"]
