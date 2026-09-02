@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "api2mcp"
+name = "spec2mcp"
 version = "0.1.0"
 description = "Turn any OpenAPI spec into a working MCP server. One command."
 readme = "README.md"

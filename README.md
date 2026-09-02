@@ -22,16 +22,10 @@ Almost every API already publishes an OpenAPI/Swagger spec describing exactly th
 ## Install
 
 ```bash
-pip install api2mcp
+pip install spec2mcp
 ```
 
-(Not on PyPI yet — for now, clone and install locally:)
-
-```bash
-git clone https://github.com/azamoviich/api2mcp
-cd api2mcp
-pip install -e .
-```
+(The PyPI package is named `spec2mcp` — `api2mcp` was already taken. The CLI command and import name are still `api2mcp`.)
 
 ## Usage
 
