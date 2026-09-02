@@ -1,9 +1,16 @@
-# api2mcp
+<p align="center">
+  <img src="assets/logo.jpg" alt="api2mcp logo" width="140"/>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](pyproject.toml)
+<h1 align="center">api2mcp</h1>
+<p align="center"><b>Turn any OpenAPI spec into a working <a href="https://modelcontextprotocol.io">MCP</a> server. One command.</b></p>
 
-**Turn any OpenAPI spec into a working [MCP](https://modelcontextprotocol.io) server. One command.**
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python 3.10+"></a>
+  <a href="https://pypi.org/project/spec2mcp/"><img src="https://img.shields.io/pypi/v/spec2mcp.svg?color=green" alt="PyPI"></a>
+  <a href="https://github.com/azamoviich/api2mcp/stargazers"><img src="https://img.shields.io/github/stars/azamoviich/api2mcp?style=social" alt="GitHub stars"></a>
+</p>
 
 ```bash
 api2mcp https://petstore3.swagger.io/api/v3/openapi.json
@@ -106,6 +113,16 @@ def findpetsbystatus(status: str = "") -> dict:
 The output is plain, readable code — not a black box. Generate it, read it, edit it by hand if you need something custom.
 
 ## How it works
+
+```mermaid
+flowchart LR
+    A["OpenAPI spec\n(URL or file)"] --> B["parser.py\nflatten paths → Operations"]
+    B --> C["generator.py\nJinja2 template"]
+    C --> D["server.py\none @mcp.tool()\nper endpoint"]
+    D --> E["MCP client\n(Claude Desktop / Claude Code)"]
+    E -->|calls tool| F["your API"]
+    F -->|response| E
+```
 
 1. **Parse** (`api2mcp/parser.py`) — loads the spec (JSON or YAML, URL or file), walks `paths`, flattens each operation's parameters and request body into a simple typed `Operation` model.
 2. **Generate** (`api2mcp/generator.py` + `templates/server.py.j2`) — renders a Jinja2 template into a single-file MCP server using the official `mcp` Python SDK.
